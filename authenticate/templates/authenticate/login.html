@@ -1,0 +1,32 @@
+{% extends 'authenticate/base.html' %}
+
+{% block content %}
+
+<h2 class="text-center"> Login</h2>
+<p class="text-center mb-4">Welcome back! Please enter your details.</p>
+
+<div class="col-md-6 offset-md-3" >
+	<form method="POST">
+
+		{% csrf_token %}
+
+		<!-- Email input -->
+		<div class="form-outline mb-4">
+			<label class="form-label" for="username">Username</label>
+			<input type="text" class="form-control" placeholder="Enter Username" name="username">
+		</div>
+
+		<!-- Password input -->
+		<div class="form-outline mb-4">
+			<label class="form-label" for="password">Password</label>
+			<input type="password" class="form-control" placeholder="Enter Password" name="password">
+		</div>
+
+		<!-- Submit button -->
+		<button type="submit" class="btn btn-primary w-100 mb-4">Sign in</button>
+		<p class="text-center">Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+	</form>
+
+</div>
+
+{% endblock %}
