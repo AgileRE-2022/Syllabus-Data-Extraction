@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Syllabus</title>
+</head>
+<body>
+    <input type="file" id="inpFile" accept="application/pdf">
+    <button type="button" id="btnUpload">Upload</button>
+    <br>
+    <br>
+    <label for="resultText">Full Document</label></br>
+    <textarea style="width: 500px; height: 150px;" id="resultText" placeholder="Your PDF text will appear here..."></textarea>
+    <hr>
+    <label>Universitas: <span id="university"></span></label></br>
+    <label>Title of Syllabus: <span id="title"></span></label></br>
+    <label>Goal of Syllabus: </label></br>
+    <textarea style="width: 500px; height: 50px;" id="goal" placeholder="Your goal of syllabus will appear here..."></textarea></br>
+    <label>Description of Syllabus: </label></br>
+    <textarea style="width: 500px; height: 150px;" id="description" placeholder="Your description of syllabus will appear here..."></textarea>
+    <script>
+        const inpFile = document.getElementById("inpFile");
+        const btnUpload = document.getElementById("btnUpload");
+        const resultText = document.getElementById("resultText");
+        const university = document.getElementById("university");
+        const title = document.getElementById("title");
+        const goal = document.getElementById("goal");
+        const description = document.getElementById("description");
+
+        btnUpload.addEventListener("click", () => {
+            const formData = new FormData();
+            var isAirlangga = false;
+            var variableA = "";
+            var variableB = {
+                "goal": "",
+                "description": ""
+            };
+
+            formData.append("pdfFile", inpFile.files[0]);
+
+            function filterAfterOneSentence(text, words) {
+                for (var i = 0; i < text.length; i++) {
+                    if (text[i].includes(words)) {
+                        return text[i + 1].trim();
+                    }
+                }
+            }
+
+            function filterBetweenSentence(text, start, end, sep=false) {
+                var result = "";
+                for (var i = 0; i < text.length; i++) {
+                    if (text[i].includes(start)) {
+                        for (var j = i + 1; j < text.length; j++) {
+                            if (text[j].includes(end)) {
+                                break;
+                            } else {
+                                if (sep && text[j].includes("•") && result.length > 0) {
+                                    result += "\n" + text[j];
+                                } else {
+                                    result += text[j];
+                                }
+                            }
+                        }
+                        return result;
+                    }
+                }
+            }
+
+            fetch("/extract-text", {
+                method: "post",
+                body: formData
+            }).then(response => {
+                return response.text();
+            }).then(extractedText => {
+                resultText.value = extractedText.trim();
+                var lines = extractedText.split("\n");
+                
+                console.log(lines);
+                // Check if the university is Airlangga
+                isAirlangga = lines.some(line => {
+                    return line.includes("Universitas Airlangga");
+                });
+                university.innerHTML = isAirlangga ? "Universitas Airlangga (UNAIR)" : "Institut Teknologi Sepuluh Nopember (ITS)";
+                
+                // Filter the title of the syllabus
+                variableA = filterAfterOneSentence(lines, isAirlangga ? "Universitas Airlangga" : "Matakuliah");
+                title.innerHTML = variableA;
+
+                // Filter the goal of the syllabus
+                if (isAirlangga) {
+                    variableB.goal = filterBetweenSentence(lines, "Capaian Pembelajaran", "Deskripsi Mata Kuliah");
+                } else {
+                    variableB.goal = filterBetweenSentence(lines, "Capaian Pembelajaran Lulusan yang Didukung", "Capaian Pembelajaran Matakuliah", true);
+                }
+                goal.innerHTML = variableB.goal;
+
+                // Filter the description of the syllabus
+                if (isAirlangga) {
+                    variableB.description = filterBetweenSentence(lines, "Deskripsi Mata Kuliah", "Atribut Soft Skills");
+                } else {
+                    variableB.description = filterBetweenSentence(lines, "Deskripsi Matakuliah", "Capaian Pembelajaran");
+                }
+                description.innerHTML = variableB.description;
+
+            });
+        });
+    </script>
+</body>
+</html>
