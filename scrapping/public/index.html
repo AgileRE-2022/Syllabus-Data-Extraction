@@ -56,8 +56,12 @@
                             if (text[j].includes(end)) {
                                 break;
                             } else {
-                                if (sep && text[j].includes("•") && result.length > 0) {
-                                    result += "\n" + text[j];
+                                if (sep && text[j].includes("•")) {
+                                    if (result.length > 0) {
+                                        result += "\n" + text[j].replace("•", "");
+                                    } else {
+                                        result += text[j].replace("•", "");
+                                    }
                                 } else {
                                     result += text[j];
                                 }
