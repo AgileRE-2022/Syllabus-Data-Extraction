@@ -13,7 +13,9 @@ Syllabus-Data-Extraction>python manage.py runserver
 
 # Penggunaan
 1. Unggah dokumen silabus dengan format .pdf pada form yang tersedia
+![Untitled](https://user-images.githubusercontent.com/87128274/170992172-49bfb684-661c-4677-abeb-571bed1058fc.jpg)
 2. Klik submit
+![Untitled (1)](https://user-images.githubusercontent.com/87128274/170992292-08be38e2-c7e1-45bc-8b72-49ff8d0eb40a.jpg)
 
 # Limitasi
 1. Silabus yang dapat digunakan yaitu berasal dari Universitas Airlangga dan Institut Teknologi Sepuluh Nopember.
