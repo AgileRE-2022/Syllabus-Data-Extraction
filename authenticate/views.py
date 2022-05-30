@@ -3,11 +3,14 @@ from django.contrib.auth import authenticate, login, logout, update_session_auth
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib import messages 
 from .forms import SignUpForm, EditProfileForm 
+from django.templatetags.static import static
+
 # Create your views here.
 def home(request): 
 	return render(request, 'authenticate/home.html', {})
 
 def syllabus(request): 
+	# print(static('x.jpg'))
 	return render(request, 'authenticate/syllabus.html', {})
 
 def login_user (request):
