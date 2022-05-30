@@ -13,8 +13,9 @@ Syllabus-Data-Extraction>python manage.py runserver
 
 # Penggunaan
 1. Unggah dokumen silabus dengan format .pdf pada form yang tersedia
-![Untitled](https://user-images.githubusercontent.com/87128274/170992172-49bfb684-661c-4677-abeb-571bed1058fc.jpg)
+<img src="https://user-images.githubusercontent.com/87128274/170992172-49bfb684-661c-4677-abeb-571bed1058fc.jpg" width="100"/>
 2. Klik submit
+
 ![Untitled (1)](https://user-images.githubusercontent.com/87128274/170993163-43a9768e-99e7-4307-b558-e5eb74906826.jpg)
 
 # Limitasi
