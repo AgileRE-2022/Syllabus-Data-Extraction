@@ -959,7 +959,7 @@ exports.stop_words = [
 },{}],3:[function(require,module,exports){
 var lda = require('./lib/lda');
 
-var text = 'To add a new language-specific stop-words list, create a file /lda/lib/stopwords_XX.js where XX is the id for the language. For example, a French stop-words list could be named "stopwords_fr.js". The contents of the file should follow the format of an existing stop-words list. The format is, as follows:To add a new language-specific stop-words list, create a file /lda/lib/stopwords_XX.js where XX is the id for the language. For example, a French stop-words list could be named "stopwords_fr.js". The contents of the file should follow the format of an existing stop-words list. The format is, as follows:To add a new language-specific stop-words list, create a file /lda/lib/stopwords_XX.js where XX is the id for the language. For example, a French stop-words list could be named "stopwords_fr.js". The contents of the file should follow the format of an existing stop-words list. The format is, as follows:';
+var text = 'Operator Sekuensial, dan Tipe Data Sederhana; Conditional; Looping; Array; Fungsi dan Rekursif; Simple Sorting; Stack dan Queue; Linkedlist; Advance Sorting; Binary Trees; Hash Tables; Heaps; Graph Mahasiswa mampu membuat algoritma dan mengimplementasikannya pada bahasa pemrograman';
 var documents = text.match( /[^\.!\?]+[\.!\?]+/g );
 
 var result = lda(documents, 2, 5);

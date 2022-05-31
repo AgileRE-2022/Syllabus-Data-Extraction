@@ -10,8 +10,13 @@ def home(request):
 	return render(request, 'authenticate/home.html', {})
 
 def syllabus(request): 
-	# print(static('x.jpg'))
 	return render(request, 'authenticate/syllabus.html', {})
+
+def documentation(request): 
+	return render(request, 'authenticate/documentation.html', {})
+
+def dataset(request): 
+	return render(request, 'authenticate/dataset.html', {})
 
 def login_user (request):
 	if request.method == 'POST': #if someone fills out form , Post it 
