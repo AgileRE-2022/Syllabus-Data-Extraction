@@ -959,9 +959,11 @@ exports.stop_words = [
 },{}],3:[function(require,module,exports){
 var lda = require('./lib/lda');
 
-var text = 'Operator Sekuensial, dan Tipe Data Sederhana; Conditional; Looping; Array; Fungsi dan Rekursif; Simple Sorting; Stack dan Queue; Linkedlist; Advance Sorting; Binary Trees; Hash Tables; Heaps; Graph Mahasiswa mampu membuat algoritma dan mengimplementasikannya pada bahasa pemrograman';
+var text = 'An old man lived in the village. He was one of the most unfortunate people in the world. The whole village was tired of him; he was always gloomy, he constantly complained and was always in a bad mood.The longer he lived, the more bile he was becoming and the more poisonous were his words. People avoided him because his misfortune became contagious. It was even unnatural and insulting to be happy next to him.He created the feeling of unhappiness in others.But one day, when he turned eighty years old, an incredible thing happened. Instantly everyone started hearing the rumour that the Old Man had become happy, he doesn’t complain about anything anymore, always smiles, and even his face is freshened up.';
+var text = document.getElementById('extracted_text').innerHTML
+console.log(text)
 var documents = text.match( /[^\.!\?]+[\.!\?]+/g );
-
+console.log("--- Topic Modelling ---")
 var result = lda(documents, 2, 5);
 
 // For each topic.

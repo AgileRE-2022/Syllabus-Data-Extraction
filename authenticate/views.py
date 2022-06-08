@@ -4,13 +4,28 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm, Password
 from django.contrib import messages 
 from .forms import SignUpForm, EditProfileForm 
 from django.templatetags.static import static
+import PyPDF2
 
 # Create your views here.
 def home(request): 
 	return render(request, 'authenticate/home.html', {})
 
 def syllabus(request): 
-	return render(request, 'authenticate/syllabus.html', {})
+	context = {'extracted_text' : ""}
+	if request.method == 'POST':
+		uploaded_file = request.FILES['document']
+		# print("uploaded_file.name")
+		# pdfFileObj = open(uploaded_file) 
+		pdfReader = PyPDF2.PdfFileReader(uploaded_file) 
+		print("--- text  ---")
+		pageObj = pdfReader.pages[0]
+		extracted_text = pageObj.extractText()
+		print("--- text  ---")
+		print("Nama File :" + uploaded_file.name)
+		print("Jumlah Halaman : " + str(pdfReader.numPages)) 
+
+		context = {'extracted_text' : extracted_text}
+	return render(request, 'authenticate/syllabus.html', context)
 
 def documentation(request): 
 	return render(request, 'authenticate/documentation.html', {})

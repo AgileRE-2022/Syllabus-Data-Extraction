@@ -7,12 +7,13 @@
     <div class="row mt-4">
         <div class="col">
             {% comment %} <p>Name: {{user.first_name}} {{ user.last_name}}</p> {% endcomment %}
-            <form action="" style="max-width: 550px;" class="d-flex align-items-center flex-column">
+            <form action="" style="max-width: 550px;" class="d-flex align-items-center flex-column" enctype="multipart/form-data" method="post">
+                {% csrf_token %}
                 <div class="form-group">
                     <h4 for="file" class="text-center fw-bold mb-4">Input field (pdf)</h4>
                     <div class="card p-5 shadow">
                         <img src="https://icons-for-free.com/download-icon-upload+icon-1320183845588203011_512.png" class="img-fluid" alt="">
-                        <input class="form-control" type="file" name="file" id="file" accept=".pdf">
+                        <input class="form-control" type="file" name="document" id="file" accept=".pdf">
         
                     </div>
                 </div>
@@ -32,7 +33,13 @@
                 </ul>
             </div>
         </div>
-        
+        {% if extracted_text %}
+        <div class="card p-3 mt-4">
+            <br>
+            <h4>Isi PDF</h4>
+            <p id="extracted_text">{{ extracted_text }}</p>
+        </div>
+        {% endif %}
     </div>
 {% endif %}
 
