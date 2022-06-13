@@ -1,3 +1,4 @@
+from unittest import result
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash 
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
@@ -5,6 +6,9 @@ from django.contrib import messages
 from .forms import SignUpForm, EditProfileForm 
 from django.templatetags.static import static
 import PyPDF2
+
+# Module scrapping for syllabus
+from .scrapping import filterAfterOneSentence, filterBetweenSentences
 
 # Create your views here.
 def home(request): 
@@ -17,12 +21,59 @@ def syllabus(request):
 		# print("uploaded_file.name")
 		# pdfFileObj = open(uploaded_file) 
 		pdfReader = PyPDF2.PdfFileReader(uploaded_file) 
-		print("--- text  ---")
 		pageObj = pdfReader.pages[0]
 		extracted_text = pageObj.extractText()
-		print("--- text  ---")
-		print("Nama File :" + uploaded_file.name)
-		print("Jumlah Halaman : " + str(pdfReader.numPages)) 
+
+		# Variables Setup
+		isAirlangga = False			# Checks if the document is from Airlangga
+		textRaw = ''				# Stores the raw text of the document
+		variableA = ''				# Stores the title of the document
+		variableB = {				# Stores the content of the document
+			"goal": "",
+			"description": "",
+		}
+  
+		# Result is all the text in the PDF file.
+		# print("--- [Text Raw]  ---")	# Prints the title of the section
+		for page in pdfReader.pages:
+			textRaw += page.extractText()
+		# print(textRaw)				# Prints the raw text of the document
+		# print(textRaw.splitlines())	# Prints the raw text of the document split into lines
+   
+		# Checks if the document is from Airlangga
+		isAirlangga = textRaw.find("Universitas Airlangga") != -1
+  
+		# Filter the title of the syllabus
+		variableA = filterAfterOneSentence(textRaw.splitlines(), "Universitas Airlangga" if isAirlangga else "Matakuliah")
+  
+		# Filter the goal of the syllabus
+		variableB["goal"] = filterBetweenSentences(
+			text = textRaw.splitlines(),
+			start = "Capaian Pembelajaran",
+			end = "Deskripsi Mata" if isAirlangga else "Capaian Pembelajaran Matakuliah",
+			bomb = 1 if isAirlangga else 4,
+		)
+  
+		# Filter the description of the syllabus
+		variableB["description"] = filterBetweenSentences(
+			text = textRaw.splitlines(),
+			start = "Deskripsi",
+			end = "Atribut" if isAirlangga else "Capaian Pembelajaran",
+			bomb = 2,
+		)
+  
+		print("--- [Resume]  ---")
+		print("Nama File :", uploaded_file.name)
+		print("Jumlah Halaman :", str(pdfReader.numPages))
+		print("Lembaga :", "Universitas Airlangga (UNAIR)" if isAirlangga else "Institut Teknologi Sepuluh Nopember (ITS)")
+		print("Judul Silabus :", variableA)
+  
+		print("--- [Capaian]  ---")
+		print(variableB["goal"])
+  
+		print("--- [Deskripsi]  ---")
+		print(variableB["description"])
+		print("-----------------\n")
 
 		context = {'extracted_text' : extracted_text}
 	return render(request, 'authenticate/syllabus.html', context)
