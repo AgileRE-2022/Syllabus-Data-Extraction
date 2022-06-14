@@ -21,14 +21,14 @@ def syllabus(request):
 		# print("uploaded_file.name")
 		# pdfFileObj = open(uploaded_file) 
 		pdfReader = PyPDF2.PdfFileReader(uploaded_file) 
-		pageObj = pdfReader.pages[0]
-		extracted_text = pageObj.extractText()
+		# pageObj = pdfReader.pages[0]
+		# extracted_text = pageObj.extractText()
 
 		# Variables Setup
 		isAirlangga = False			# Checks if the document is from Airlangga
 		textRaw = ''				# Stores the raw text of the document
-		variableA = ''				# Stores the title of the document
-		variableB = {				# Stores the content of the document
+		title = ''				# Stores the title of the document
+		content = {				# Stores the content of the document
 			"goal": "",
 			"description": "",
 		}
@@ -44,10 +44,10 @@ def syllabus(request):
 		isAirlangga = textRaw.find("Universitas Airlangga") != -1
   
 		# Filter the title of the syllabus
-		variableA = filterAfterOneSentence(textRaw.splitlines(), "Universitas Airlangga" if isAirlangga else "Matakuliah")
+		title = filterAfterOneSentence(textRaw.splitlines(), "Universitas Airlangga" if isAirlangga else "Matakuliah")
   
 		# Filter the goal of the syllabus
-		variableB["goal"] = filterBetweenSentences(
+		content["goal"] = filterBetweenSentences(
 			text = textRaw.splitlines(),
 			start = "Capaian Pembelajaran",
 			end = "Deskripsi Mata" if isAirlangga else "Capaian Pembelajaran Matakuliah",
@@ -55,7 +55,7 @@ def syllabus(request):
 		)
   
 		# Filter the description of the syllabus
-		variableB["description"] = filterBetweenSentences(
+		content["description"] = filterBetweenSentences(
 			text = textRaw.splitlines(),
 			start = "Deskripsi",
 			end = "Atribut" if isAirlangga else "Capaian Pembelajaran",
@@ -66,16 +66,18 @@ def syllabus(request):
 		print("Nama File :", uploaded_file.name)
 		print("Jumlah Halaman :", str(pdfReader.numPages))
 		print("Lembaga :", "Universitas Airlangga (UNAIR)" if isAirlangga else "Institut Teknologi Sepuluh Nopember (ITS)")
-		print("Judul Silabus :", variableA)
+		print("Judul Silabus :", title)
   
 		print("--- [Capaian]  ---")
-		print(variableB["goal"])
+		print(content["goal"])
   
 		print("--- [Deskripsi]  ---")
-		print(variableB["description"])
+		print(content["description"])
 		print("-----------------\n")
 
-		context = {'extracted_text' : extracted_text}
+		extracted_text = content["goal"] + content["description"]
+
+		context = {'extracted_text' : extracted_text, 'title' : title, 'university' : "Universitas Airlangga (UNAIR)" if isAirlangga else "Institut Teknologi Sepuluh Nopember (ITS)"}
 	return render(request, 'authenticate/syllabus.html', context)
 
 def documentation(request): 
