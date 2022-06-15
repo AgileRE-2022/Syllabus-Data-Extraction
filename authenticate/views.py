@@ -6,6 +6,8 @@ from django.contrib import messages
 from .forms import SignUpForm, EditProfileForm 
 from django.templatetags.static import static
 import PyPDF2
+from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
+from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
 
 # Module scrapping for syllabus
 from .scrapping import filterAfterOneSentence, filterBetweenSentences
@@ -75,9 +77,22 @@ def syllabus(request):
 		print(content["description"])
 		print("-----------------\n")
 
-		extracted_text = content["goal"] + content["description"]
+		extracted_text = content["goal"] + ' ' + content["description"]
 
-		context = {'extracted_text' : extracted_text, 'title' : title, 'university' : "Universitas Airlangga (UNAIR)" if isAirlangga else "Institut Teknologi Sepuluh Nopember (ITS)"}
+		parts = extracted_text.split(".")
+		factory = StemmerFactory()
+		stemmer = factory.create_stemmer()
+		# factory2 = StopWordRemoverFactory()
+		# stopwords = factory2.get_stop_words()
+		factory2 = StopWordRemoverFactory()
+		stopword = factory2.create_stop_word_remover()
+		for index,part in enumerate(parts):
+			parts[index] = stopword.remove(part)
+			parts[index] = stemmer.stem(parts[index])
+		print("\n--- [PARTS]  ---\n")
+		print(parts)
+
+		context = {'content' : extracted_text, 'extracted_text' : parts, 'title' : title, 'university' : "Universitas Airlangga (UNAIR)" if isAirlangga else "Institut Teknologi Sepuluh Nopember (ITS)"}
 	return render(request, 'authenticate/syllabus.html', context)
 
 def documentation(request): 
