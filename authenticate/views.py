@@ -6,6 +6,7 @@ from django.contrib import messages
 from .forms import SignUpForm, EditProfileForm 
 from django.templatetags.static import static
 import PyPDF2
+import re 
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
 
@@ -82,13 +83,15 @@ def syllabus(request):
 		parts = extracted_text.split(".")
 		factory = StemmerFactory()
 		stemmer = factory.create_stemmer()
-		# factory2 = StopWordRemoverFactory()
-		# stopwords = factory2.get_stop_words()
 		factory2 = StopWordRemoverFactory()
 		stopword = factory2.create_stop_word_remover()
 		for index,part in enumerate(parts):
+			# Stop word removal
 			parts[index] = stopword.remove(part)
+			# Stemming
 			parts[index] = stemmer.stem(parts[index])
+			# Number Removal
+			parts[index] = re.sub(r"\d+", "", parts[index])
 		print("\n--- [PARTS]  ---\n")
 		print(parts)
 
