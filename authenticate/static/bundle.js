@@ -305,7 +305,15 @@ text = text.replace(/'/g, '"')
 // console.log("'" + text + "'")
 console.log(JSON.parse(text))
 console.log("--- Topic Modelling ---")
-var result = lda(JSON.parse(text), 2, 5, ['en']);
+var result = lda(JSON.parse(text), 1, 10, ['en']);
+
+list = [];
+for (var i in result[0]) {
+  list.push([result[0][i]["term"], result[0][i]["probability"]*1000])
+}
+
+WordCloud.minFontSize = "15px"
+WordCloud(document.getElementById('word_cloud'), { list: list} );
 
 // For each topic.
 for (var i in result) {
