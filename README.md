@@ -6,7 +6,7 @@ Syllabus Data Extractor (SDE) merupakan aplikasi untuk ekstraksi data edukasi da
 # Instalasi
 1. Lakukan instalasi Django. Dokumentasi dapat dilihat pada link: https://docs.djangoproject.com/en/4.0/
 2. SDE dapat diinstal dengan cara kloning repositori github pada link: https://github.com/AgileRE-2022/Syllabus-Data-Extraction
-3. Setelah Django dan SDE terinstal, silahkan install dependency PyPDF2 dengan perintah `python pip install PyPDF2` dan dan Sastrawi dengan perintah `python pip install Sastrawi` atau cek dokumentasi pada link: https://pypi.org/project/PyPDF2/ ; https://pypi.org/project/Sastrawi/
+3. Setelah Django dan SDE terinstal, silahkan install dependency PyPDF2 dengan perintah `python pip install PyPDF2 Sastrawi` atau cek dokumentasi pada link: https://pypi.org/project/PyPDF2/ ; https://pypi.org/project/Sastrawi/
 4. Terakhir, aplikasi dapat dijalankan dengan perintah `python manage.py runserver`.
 ```
 Syllabus-Data-Extraction > python manage.py runserver

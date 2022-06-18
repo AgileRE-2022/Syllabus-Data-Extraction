@@ -5,13 +5,9 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm, Password
 from django.contrib import messages 
 from .forms import SignUpForm, EditProfileForm 
 from django.templatetags.static import static
-import PyPDF2
-import re 
-from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
-from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
 
 # Module scrapping for syllabus
-from .scrapping import filterAfterOneSentence, filterBetweenSentences
+from .scrapping import scrapDocument
 
 # Create your views here.
 def home(request): 
@@ -20,82 +16,16 @@ def home(request):
 def syllabus(request): 
 	context = {'extracted_text' : ""}
 	if request.method == 'POST':
-		uploaded_file = request.FILES['document']
-		# print("uploaded_file.name")
-		# pdfFileObj = open(uploaded_file) 
-		pdfReader = PyPDF2.PdfFileReader(uploaded_file) 
-		# pageObj = pdfReader.pages[0]
-		# extracted_text = pageObj.extractText()
-
-		# Variables Setup
-		isAirlangga = False			# Checks if the document is from Airlangga
-		textRaw = ''				# Stores the raw text of the document
-		title = ''				# Stores the title of the document
-		content = {				# Stores the content of the document
-			"goal": "",
-			"description": "",
-		}
-  
-		# Result is all the text in the PDF file.
-		# print("--- [Text Raw]  ---")	# Prints the title of the section
-		for page in pdfReader.pages:
-			textRaw += page.extractText()
-		# print(textRaw)				# Prints the raw text of the document
-		# print(textRaw.splitlines())	# Prints the raw text of the document split into lines
-   
-		# Checks if the document is from Airlangga
-		isAirlangga = textRaw.find("Universitas Airlangga") != -1
-  
-		# Filter the title of the syllabus
-		title = filterAfterOneSentence(textRaw.splitlines(), "Universitas Airlangga" if isAirlangga else "Matakuliah")
-  
-		# Filter the goal of the syllabus
-		content["goal"] = filterBetweenSentences(
-			text = textRaw.splitlines(),
-			start = "Capaian Pembelajaran",
-			end = "Deskripsi Mata" if isAirlangga else "Capaian Pembelajaran Matakuliah",
-			bomb = 1 if isAirlangga else 4,
+		context = scrapDocument(
+      		uploadedFile = request.FILES['document'], 
+        	segment = "File 1",
+			isDebugging = True
 		)
-  
-		# Filter the description of the syllabus
-		content["description"] = filterBetweenSentences(
-			text = textRaw.splitlines(),
-			start = "Deskripsi",
-			end = "Atribut" if isAirlangga else "Capaian Pembelajaran",
-			bomb = 2,
+		contextFile2 = scrapDocument(
+      		uploadedFile = request.FILES['document2'],
+			segment = "File 2",
+			isDebugging = True
 		)
-  
-		print("--- [Resume]  ---")
-		print("Nama File :", uploaded_file.name)
-		print("Jumlah Halaman :", str(pdfReader.numPages))
-		print("Lembaga :", "Universitas Airlangga (UNAIR)" if isAirlangga else "Institut Teknologi Sepuluh Nopember (ITS)")
-		print("Judul Silabus :", title)
-  
-		print("--- [Capaian]  ---")
-		print(content["goal"])
-  
-		print("--- [Deskripsi]  ---")
-		print(content["description"])
-		print("-----------------\n")
-
-		extracted_text = content["goal"] + ' ' + content["description"]
-
-		parts = extracted_text.split(".")
-		factory = StemmerFactory()
-		stemmer = factory.create_stemmer()
-		factory2 = StopWordRemoverFactory()
-		stopword = factory2.create_stop_word_remover()
-		for index,part in enumerate(parts):
-			# Stop word removal
-			parts[index] = stopword.remove(part)
-			# Stemming
-			parts[index] = stemmer.stem(parts[index])
-			# Number Removal
-			parts[index] = re.sub(r"\d+", "", parts[index])
-		print("\n--- [PARTS]  ---\n")
-		print(parts)
-
-		context = {'content' : extracted_text, 'extracted_text' : parts, 'title' : title, 'university' : "Universitas Airlangga (UNAIR)" if isAirlangga else "Institut Teknologi Sepuluh Nopember (ITS)"}
 	return render(request, 'authenticate/syllabus.html', context)
 
 def documentation(request): 
