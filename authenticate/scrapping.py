@@ -97,7 +97,7 @@ def scrapDocument(uploadedFile, segment: str, isDebugging: bool = False):
     # Print the result (Debugging) 
     if (isDebugging):
         widthPrint = os.get_terminal_size().columns
-        pp = pprint.PrettyPrinter(indent=4, width=widthPrint)
+        pp = pprint.PrettyPrinter(width=widthPrint, compact=True)
         
         if (debuggingSettings["printResumedFile"]):
             print("\n" + ("[Resume: " + segment + "]").center(widthPrint, '-'))

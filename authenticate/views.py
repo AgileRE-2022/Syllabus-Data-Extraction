@@ -1,12 +1,9 @@
 from unittest import result
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash 
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages 
 from .forms import SignUpForm, EditProfileForm 
-from django.templatetags.static import static
-
-# Module scrapping for syllabus
 from .scrapping import scrapDocument
 
 # Create your views here.
