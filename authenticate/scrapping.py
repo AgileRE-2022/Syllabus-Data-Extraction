@@ -124,9 +124,9 @@ def scrapDocument(uploadedFile, segment: str, isDebugging: bool = False):
     
     # Return the result
     context = {
-        'content': content["goal"] + " " + content["description"],
-        'extracted_text': extractedText,
         'title': title,
         'university': "Universitas Airlangga (UNAIR)" if isAirlangga else "Institut Teknologi Sepuluh Nopember (ITS)",
+        'content': content["goal"] + " " + content["description"],
+        'extracted_text': extractedText,
     }
     return context

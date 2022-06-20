@@ -11,18 +11,24 @@ def home(request):
 	return render(request, 'authenticate/home.html', {})
 
 def syllabus(request): 
-	context = {'extracted_text' : ""}
+	context = {'result' : 0}
 	if request.method == 'POST':
-		context = scrapDocument(
+		file1 = scrapDocument(
       		uploadedFile = request.FILES['document'], 
         	segment = "File 1",
 			isDebugging = True
 		)
-		contextFile2 = scrapDocument(
-      		uploadedFile = request.FILES['document2'],
+		file2 = scrapDocument(
+      		uploadedFile = request.FILES['document2'],	
 			segment = "File 2",
 			isDebugging = True
 		)
+		context = {
+			'result' : 1,
+			'file1': file1,
+			'file2' : file2,
+			'merged' : file1['extracted_text'] + file2['extracted_text']
+		}
 	return render(request, 'authenticate/syllabus.html', context)
 
 def documentation(request): 

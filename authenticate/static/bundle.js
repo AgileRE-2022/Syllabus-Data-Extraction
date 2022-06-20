@@ -298,43 +298,83 @@ exports.stop_words = [];
 },{}],3:[function(require,module,exports){
 var lda = require('./lib/lda');
 
-var text = 'An old man lived in the village. He was one of the most unfortunate people in the world. The whole village was tired of him; he was always gloomy, he constantly complained and was always in a bad mood.The longer he lived, the more bile he was becoming and the more poisonous were his words. People avoided him because his misfortune became contagious. It was even unnatural and insulting to be happy next to him.He created the feeling of unhappiness in others.But one day, when he turned eighty years old, an incredible thing happened. Instantly everyone started hearing the rumour that the Old Man had become happy, he doesn’t complain about anything anymore, always smiles, and even his face is freshened up.';
-var text = document.getElementById('extracted_text').innerHTML
-var documents = text.match( /[^\.!\?]+[\.!\?]+/g );
-text = text.replace(/'/g, '"')
-// console.log("'" + text + "'")
-console.log(JSON.parse(text))
-console.log("--- Topic Modelling ---")
-var result = lda(JSON.parse(text), 1, 10, ['en']);
+// var text = 'An old man lived in the village. He was one of the most unfortunate people in the world. The whole village was tired of him; he was always gloomy, he constantly complained and was always in a bad mood.The longer he lived, the more bile he was becoming and the more poisonous were his words. People avoided him because his misfortune became contagious. It was even unnatural and insulting to be happy next to him.He created the feeling of unhappiness in others.But one day, when he turned eighty years old, an incredible thing happened. Instantly everyone started hearing the rumour that the Old Man had become happy, he doesn’t complain about anything anymore, always smiles, and even his face is freshened up.';
+var text = document.getElementById('extracted_text1').innerHTML
+var text2 = document.getElementById('extracted_text2').innerHTML
+var merged = document.getElementById('merged_extracted_text').innerHTML
+// var documents = text.match( /[^\.!\?]+[\.!\?]+/g );
 
-list = [];
-for (var i in result[0]) {
-  list.push([result[0][i]["term"], result[0][i]["probability"]*1000])
-}
+// text = text.replace(/'/g, '"')
+// text2 = text2.replace(/'/g, '"')
+// merged = merged.replace(/'/g, '"')
+// // console.log("'" + text + "'")
+// // console.log(JSON.parse(text))
+// // console.log("--- Topic Modelling ---")
+// var result = lda(JSON.parse(text), 1, 10, ['en']);
+// var result2 = lda(JSON.parse(text2), 1, 10, ['en']);
+// var result_merged = lda(JSON.parse(merged), 1, 10, ['en']);
 
-WordCloud.minFontSize = "15px"
-WordCloud(document.getElementById('word_cloud'), { list: list} );
+display_topics('res_container1', text)
+display_topics('res_container2', text2)
+display_topics('merged_res_container', merged)
 
 // For each topic.
-for (var i in result) {
-	var row = result[i];
-	console.log('Topic ' + (parseInt(i) + 1));
-  document.getElementById(`head${parseInt(i)+1}`).innerHTML = 'Topic ' + (parseInt(i) + 1);
-	
-	// For each term.
-  var ul = document.getElementById(`content${parseInt(i)+1}`);
-	for (var j in row) {
-		var term = row[j];
-    var li = document.createElement('li');
-    li.setAttribute('class','item');
+function display_topics(el_id, result) {
+  result = result.replace(/'/g, '"')
+  var result = lda(JSON.parse(result), 1, 10, ['en']);
+  var topics_div = document.getElementById(el_id);
+  topics_div.innerHTML = '';
+  for (var i in result) {
+    var topic = result[i];
+    var topic_div = document.createElement('div');
 
-    ul.appendChild(li);
-    li.innerHTML = (term.term + ' (' + term.probability + '%)');
-		console.log(term.term + ' (' + term.probability + '%)');
-	}
-	
-	console.log('');
+    var topic_wordcloud = document.createElement('canvas');
+    topic_wordcloud.id = 'topic_wordcloud' + el_id;
+    topic_wordcloud.width = 400;
+    topic_wordcloud.height = 200;
+    topics_div.appendChild(topic_wordcloud)
+
+    topics_div.appendChild(document.createElement('hr'))
+
+    topic_div.className = 'topic';
+    topic_div.innerHTML = '<h4>Word List</h4>';
+    // var terms = topic.terms;
+    for (var j in topic) {
+      var term = topic[j];
+      var term_div = document.createElement('div');
+      term_div.className = 'term';
+      term_div.innerHTML = term.term + ' (' + term.probability.toFixed(2) + ')';
+      topic_div.appendChild(term_div);
+    }
+    topics_div.appendChild(topic_div);
+
+    var list = [];
+    for (var k in topic) {
+      list.push([topic[k]["term"], topic[k]["probability"]*1000])
+    }
+    WordCloud(document.getElementById('topic_wordcloud' + el_id), { list: list} );
+    
+  }
 }
+// for (var i in result) {
+// 	var row = result[i];
+// 	console.log('Topic ' + (parseInt(i) + 1));
+//   document.getElementById(`head${parseInt(i)+1}`).innerHTML = 'Topic ' + (parseInt(i) + 1);
+	
+// 	// For each term.
+//   var ul = document.getElementById(`content${parseInt(i)+1}`);
+// 	for (var j in row) {
+// 		var term = row[j];
+//     var li = document.createElement('li');
+//     li.setAttribute('class','item');
+
+//     ul.appendChild(li);
+//     li.innerHTML = (term.term + ' (' + term.probability + '%)');
+// 		console.log(term.term + ' (' + term.probability + '%)');
+// 	}
+	
+// 	console.log('');
+// }
 },{"./lib/lda":1}],4:[function(require,module,exports){
 var stemmer = require('./stemmer')
 
