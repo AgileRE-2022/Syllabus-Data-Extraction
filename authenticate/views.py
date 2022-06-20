@@ -16,12 +16,10 @@ def syllabus(request):
 		file1 = scrapDocument(
       		uploadedFile = request.FILES['document'], 
         	segment = "File 1",
-			isDebugging = True
 		)
 		file2 = scrapDocument(
       		uploadedFile = request.FILES['document2'],	
 			segment = "File 2",
-			isDebugging = True
 		)
 		context = {
 			'result' : 1,

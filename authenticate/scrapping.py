@@ -96,7 +96,7 @@ def scrapDocument(uploadedFile, segment: str, isDebugging: bool = False):
     
     # Print the result (Debugging) 
     if (isDebugging):
-        widthPrint = os.get_terminal_size().columns
+        widthPrint = os.get_terminal_size().columns if False else 80
         pp = pprint.PrettyPrinter(width=widthPrint, compact=True)
         
         if (debuggingSettings["printResumedFile"]):
