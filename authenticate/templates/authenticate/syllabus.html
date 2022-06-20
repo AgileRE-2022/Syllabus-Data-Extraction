@@ -37,12 +37,8 @@
     </div>
     {% if result %}
     <hr class="my-4">
-    <h4 class="text-center fw-bold mb-4">Topic Modelling Result</h4>
-    <div class="row my-4 card">
-        <div class="col-12 col-md-4">
-            <div class="card p-4 m-2" id="res_container1">
-            </div>
-        </div>
+    <h4 class="text-center fw-bold my-4">Topic Modelling Result</h4>
+    <div class="row my-4">
         <div class="col-md-8 ">
             <div class="card p-3 m-2">
                 <h4>File 1</h4>
@@ -52,12 +48,12 @@
                 <p><strong>Pre-processed Silabus : </strong> <span id="extracted_text1">{{ file1.extracted_text }}</span></p>
             </div>
         </div>
-    </div>
-    <div class="row my-4">
         <div class="col-12 col-md-4">
-            <div class="card p-4 m-2" id="res_container2">
+            <div class="card p-4 m-2" id="res_container1">
             </div>
         </div>
+    </div>
+    <div class="row my-4">
         <div class="col-md-8">
             <card class="card p-3 m-2">
                 <h4>File 2</h4>
@@ -67,13 +63,30 @@
                 <p><strong>Pre-processed Silabus : </strong> <span id="extracted_text2">{{ file2.extracted_text }}</span></p>
             </card>
         </div>
+        <div class="col-12 col-md-4">
+            <div class="card p-4 m-2" id="res_container2">
+            </div>
+        </div>
     </div>
-    <div class="card p-4 mb-4">
-        <h4>Hasil Kombinasi Kedua File</h4>
-        <p><strong>Pre-processed Combined Syllabus : </strong>
-            <span id="merged_extracted_text">{{ merged }}</span>
-        </p>
-        <div id="merged_res_container"></div>
+    <hr>
+    <h4 class="text-center fw-bold my-4">Combined Topic Modelling Result</h4>
+    <div class="my-4 row">
+        <div class="col-12 col-md-8">
+            <div class="card p-3 m-2">
+                <h4>Hasil Kombinasi Kedua File</h4>
+                <p class="mt-3"><strong>Kombinasi Silabus : </strong>
+                    <span>{{ file1.content }} {{ file2.content }}</span>
+                </p>
+                <p><strong>Pre-processed Kombinasi Silabus : </strong>
+                    <span id="merged_extracted_text">{{ merged }}</span>
+                </p>
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="card p-4 m-2" id="merged_res_container">
+
+            </div>
+        </div>
     </div>
     {% endif %}
 {% endif %}
