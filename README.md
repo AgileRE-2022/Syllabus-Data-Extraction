@@ -45,13 +45,13 @@ This application will generate three outputs, from each universities and combine
 
 
 # Limitation
-1. The Syllabus Data Extraction application can only process the syllabus from Universitas Airlangga and Institut Teknologi Sepuluh November, specifically for the Information Systems Study Program because the scrapping and regular expression methods are created for only both syllabus
-2. The application only accept syllabus in .pdf format as the input
-3. User has to input each one, not more nor less, Unair and ITS syllabus at the same time (the system will show a recommendation to input the same subject for both syllabuses). This step is important so that the application can generate maximal results for user.
-4. The application can only handle current structure of both syllabuses. Further update on the documents format and structure require improvement on the scrapping and regular expression methods.
-5. The result of the topic modelling consist of word cloud and word list.
+1. The Syllabus Data Extraction application can only process the syllabus from Universitas Airlangga and Institut Teknologi Sepuluh November, specifically for the Information Systems Study Program because the scrapping and regular expression methods are created for only both syllabus.
+2. The application only accepts syllabus in .pdf format as input.
+3. The user has to input each one, not more nor less, Unair and ITS syllabus at the same time (the system will show a recommendation to input the same subject for both syllabuses). This step is important so that the application can generate maximal results for the user.
+4. The application can only handle the current structure of both syllabuses. Further updates on the format and structure of the document require improvement in the scrapping and regular expression methods.
+5. The result of the topic modeling consists of a word cloud and word list.
 6. The result will show one topic for each Unair and ITS syllabuses, and the combined syllabuses.
-7. Generated word list contain 10 words from each syllabuses.
+7. Generated word list contains 10 words from each syllabuses.
 
 
 # Our Works
