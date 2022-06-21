@@ -26,7 +26,7 @@ User starts with inputting syllabus documents from Unair and ITS then the applic
 <img src="https://user-images.githubusercontent.com/87128274/174703374-35212524-dd87-49a1-8043-38d3f9c6bcbf.png" width="600"/>
 
 ## Output
-<img src="https://user-images.githubusercontent.com/87128274/174703408-26a81ee2-ac81-4e1e-a336-9dce856dd0ad.jpg" height="300"/> <img src="https://user-images.githubusercontent.com/87128274/174703422-1dd7c8b5-0dbe-4b0e-be90-5959c74e6e6c.jpg" height="300"/>
+<img src="https://user-images.githubusercontent.com/87128274/174703408-26a81ee2-ac81-4e1e-a336-9dce856dd0ad.jpg" height="200"/> <img src="https://user-images.githubusercontent.com/87128274/174703422-1dd7c8b5-0dbe-4b0e-be90-5959c74e6e6c.jpg" height="200"/>
 <img src="https://user-images.githubusercontent.com/87128274/174703429-0010dd1c-beb4-4c3a-99d6-95547765e005.jpg" width="600"/>
 
 
