@@ -3,7 +3,7 @@
 # Overview
 Syllabus Data Extractor (SDE) is an app to extract education data from syllabus document to retrieve information about related subject and major.
 
-# Instalasi
+# How to Install
 1. Make sure Django is installed. You can see the documentation on: https://docs.djangoproject.com/en/4.0/
 2. Clone SDE Github repository from: https://github.com/AgileRE-2022/Syllabus-Data-Extraction
 3. Install PyPDF2 dan Sastrawi dependencies with the command `python pip install PyPDF2 Sastrawi` or check the documentation on: https://pypi.org/project/PyPDF2/ ; https://pypi.org/project/Sastrawi/
@@ -18,6 +18,7 @@ Syllabus-Data-Extraction > python manage.py runserver
 2. Submit the files
 
 ![Untitled (1)](https://user-images.githubusercontent.com/87128274/170993163-43a9768e-99e7-4307-b558-e5eb74906826.jpg)
+
 3. SDE will generate two topic modelling result, from each syllabuses and from both syllabuses combined. The result consist of overviews, word clouds, and word lists.
 
 # Limitation
