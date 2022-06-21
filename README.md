@@ -19,16 +19,16 @@ User starts with inputting syllabus documents from Unair and ITS then the applic
 
 ## Input
 <img src="https://user-images.githubusercontent.com/87128274/174703317-4902d6e4-9026-4ddb-95fd-3fbd9f4abee0.jpg" height="500"/> <img src="https://user-images.githubusercontent.com/87128274/174703323-d5e25a4f-4583-4164-a1f3-12f9a3ecbf8a.jpg" height="500"/>
-
-
+These are examples of Information Systems syllabuses from both universities. Please note that this application only accept current structure of these syllabuses.
 
 ## Dataset
 <img src="https://user-images.githubusercontent.com/87128274/174703374-35212524-dd87-49a1-8043-38d3f9c6bcbf.png" width="600"/>
+This application provide some dataset examples consisting of some Information Systems subjects from each universities. These can be found in the 'Dataset' tab.
 
 ## Output
-<img src="https://user-images.githubusercontent.com/87128274/174703408-26a81ee2-ac81-4e1e-a336-9dce856dd0ad.jpg" height="200"/> <img src="https://user-images.githubusercontent.com/87128274/174703422-1dd7c8b5-0dbe-4b0e-be90-5959c74e6e6c.jpg" height="200"/>
+<img src="https://user-images.githubusercontent.com/87128274/174703408-26a81ee2-ac81-4e1e-a336-9dce856dd0ad.jpg" height="250"/> <img src="https://user-images.githubusercontent.com/87128274/174703422-1dd7c8b5-0dbe-4b0e-be90-5959c74e6e6c.jpg" height="250"/>
 <img src="https://user-images.githubusercontent.com/87128274/174703429-0010dd1c-beb4-4c3a-99d6-95547765e005.jpg" width="600"/>
-
+This application will generate three outputs, from each universities and combined result. The output consist of overviews, word clouds, and word lists.
 
 
 # How to Use
