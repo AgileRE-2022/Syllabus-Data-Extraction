@@ -14,7 +14,8 @@ Syllabus-Data-Extraction > python manage.py runserver
 
 
 # How it Works
-![IMG-20220621-WA0002](https://user-images.githubusercontent.com/87128274/174702911-ddf2c7f2-5487-4d01-9f0c-0d9ff318f57d.jpg)
+<img src="https://user-images.githubusercontent.com/87128274/174702911-ddf2c7f2-5487-4d01-9f0c-0d9ff318f57d.jpg" width="800"/>
+
 
 ## Input
 asf
@@ -26,7 +27,7 @@ asd
 
 # How to Use
 1. Upload the syllabus documents with .pdf format
-<img src="https://user-images.githubusercontent.com/87128274/174691975-f15f5c4b-d389-4bbc-a5be-1bb73462fb87.jpg" width="500"/>
+<img src="https://user-images.githubusercontent.com/87128274/174691975-f15f5c4b-d389-4bbc-a5be-1bb73462fb87.jpg" width="800"/>
 2. Submit the files
 
 ![Untitled (1)](https://user-images.githubusercontent.com/87128274/170993163-43a9768e-99e7-4307-b558-e5eb74906826.jpg)
