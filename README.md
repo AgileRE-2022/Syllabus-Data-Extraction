@@ -23,17 +23,17 @@ User starts with inputting syllabus documents from Unair and ITS then the applic
 
 
 ## Dataset
-<img src="https://user-images.githubusercontent.com/87128274/174703374-35212524-dd87-49a1-8043-38d3f9c6bcbf.png" width="800"/>
+<img src="https://user-images.githubusercontent.com/87128274/174703374-35212524-dd87-49a1-8043-38d3f9c6bcbf.png" width="600"/>
 
 ## Output
-<img src="https://user-images.githubusercontent.com/87128274/174703408-26a81ee2-ac81-4e1e-a336-9dce856dd0ad.jpg" width="500"/> <img src="https://user-images.githubusercontent.com/87128274/174703422-1dd7c8b5-0dbe-4b0e-be90-5959c74e6e6c.jpg" width="500"/>
+<img src="https://user-images.githubusercontent.com/87128274/174703408-26a81ee2-ac81-4e1e-a336-9dce856dd0ad.jpg" height="300"/> <img src="https://user-images.githubusercontent.com/87128274/174703422-1dd7c8b5-0dbe-4b0e-be90-5959c74e6e6c.jpg" height="300"/>
 <img src="https://user-images.githubusercontent.com/87128274/174703429-0010dd1c-beb4-4c3a-99d6-95547765e005.jpg" width="600"/>
 
 
 
 # How to Use
 1. Upload the syllabus documents with .pdf format
-<img src="https://user-images.githubusercontent.com/87128274/174691975-f15f5c4b-d389-4bbc-a5be-1bb73462fb87.jpg" width="800"/>
+<img src="https://user-images.githubusercontent.com/87128274/174691975-f15f5c4b-d389-4bbc-a5be-1bb73462fb87.jpg" width="600"/>
 2. Submit the files
 
 ![Untitled (1)](https://user-images.githubusercontent.com/87128274/170993163-43a9768e-99e7-4307-b558-e5eb74906826.jpg)
