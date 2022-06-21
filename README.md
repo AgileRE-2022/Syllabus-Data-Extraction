@@ -1,27 +1,34 @@
 # Syllabus-Data-Extraction
 
 # Overview
-Syllabus Data Extractor (SDE) merupakan aplikasi untuk ekstraksi data edukasi dari dokumen silabus pendidikan untuk mendapatkan informasi mngenai mata kuliah dan jurusan terkait.
+Syllabus Data Extractor (SDE) is an app to extract education data from syllabus document to retrieve information about related subject and major.
 
 # Instalasi
-1. Lakukan instalasi Django. Dokumentasi dapat dilihat pada link: https://docs.djangoproject.com/en/4.0/
-2. SDE dapat diinstal dengan cara kloning repositori github pada link: https://github.com/AgileRE-2022/Syllabus-Data-Extraction
-3. Setelah Django dan SDE terinstal, silahkan install dependency PyPDF2 dan Sastrawi dengan perintah `python pip install PyPDF2 Sastrawi` atau cek dokumentasi pada link: https://pypi.org/project/PyPDF2/ ; https://pypi.org/project/Sastrawi/
-4. Terakhir, aplikasi dapat dijalankan dengan perintah `python manage.py runserver`.
+1. Make sure Django is installed. You can see the documentation on: https://docs.djangoproject.com/en/4.0/
+2. Clone SDE Github repository from: https://github.com/AgileRE-2022/Syllabus-Data-Extraction
+3. Install PyPDF2 dan Sastrawi dependencies with the command `python pip install PyPDF2 Sastrawi` or check the documentation on: https://pypi.org/project/PyPDF2/ ; https://pypi.org/project/Sastrawi/
+4. Run the following command to run the application: `python manage.py runserver`.
 ```
 Syllabus-Data-Extraction > python manage.py runserver
 ```
 
-# Penggunaan
-1. Unggah dokumen silabus dengan format .pdf pada form yang tersedia
-<img src="https://user-images.githubusercontent.com/87128274/170992172-49bfb684-661c-4677-abeb-571bed1058fc.jpg" width="500"/>
-2. Klik submit
+# How to Use
+1. Upload the syllabus documents with .pdf format
+<img src="https://user-images.githubusercontent.com/87128274/174691975-f15f5c4b-d389-4bbc-a5be-1bb73462fb87.jpg" width="500"/>
+2. Submit the files
 
 ![Untitled (1)](https://user-images.githubusercontent.com/87128274/170993163-43a9768e-99e7-4307-b558-e5eb74906826.jpg)
+3. SDE will generate two topic modelling result, from each syllabuses and from both syllabuses combined. The result consist of overviews, word clouds, and word lists.
 
-# Limitasi
-1. Silabus yang dapat digunakan yaitu berasal dari Universitas Airlangga dan Institut Teknologi Sepuluh Nopember.
-2. Dokumen silabus yang dapat digunakan harus memiliki format file .pdf.
+# Limitation
+1. The Syllabus Data Extraction application can only process the syllabus from Universitas Airlangga and Institut Teknologi Sepuluh November, specifically for the Information Systems Study Program because the scrapping and regular expression methods are created for only both syllabus
+2. The application only accept syllabus in .pdf format as the input
+3. User has to input each one, not more nor less, Unair and ITS syllabus at the same time (the system will show a recommendation to input the same subject for both syllabuses). This step is important so that the application can generate maximal results for user.
+4. The application can only handle current structure of both syllabuses. Further update on the documents format and structure require improvement on the scrapping and regular expression methods.
+5. The result of the topic modelling consist of word cloud and word list.
+6. The result will show one topic for each Unair and ITS syllabuses, and the combined syllabuses.
+7. Generated word list contain 10 words from each syllabuses.
+
 
 # Google Docs Paper
 https://docs.google.com/document/d/1-UAMIWk_p9pDrvQrgv7pen5Pjfx8Se5YazVdKwgV_gA/edit?usp=sharing
