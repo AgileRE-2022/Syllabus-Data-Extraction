@@ -14,7 +14,8 @@ Syllabus-Data-Extraction > python manage.py runserver
 
 
 # How it Works
-asd
+![IMG-20220621-WA0002](https://user-images.githubusercontent.com/87128274/174702911-ddf2c7f2-5487-4d01-9f0c-0d9ff318f57d.jpg)
+
 ## Input
 asf
 ## Dataset
