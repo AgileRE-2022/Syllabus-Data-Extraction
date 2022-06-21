@@ -1,7 +1,10 @@
 # Welcome to Syllabus-Data-Extraction!
 
 # Overview
-Syllabus Data Extractor (SDE) is an application to extract education data from syllabus document to retrieve information about related subject and major.
+Syllabus Data Extraction (SDE) is an application to extract education data from syllabus document to retrieve information about related subject and major.
+
+# Live Demo
+You can use this application (demo) by accessing our [website](https://syllabus-data-extractor.herokuapp.com)
 
 # How to Install
 1. Make sure Django is installed. You can see the documentation on: https://docs.djangoproject.com/en/4.0/
@@ -44,8 +47,9 @@ This application will generate three outputs, from each universities and combine
 3. SDE will generate two topic modelling result, from each syllabuses and from both syllabuses combined. The result consist of overviews, word clouds, and word lists.
 
 
-# Limitation
-1. The Syllabus Data Extraction application can only process the syllabus from Universitas Airlangga and Institut Teknologi Sepuluh November, specifically for the Information Systems Study Program because the scrapping and regular expression methods are created for only both syllabus.
+# Limitations
+Due to the lack of time and the difficulty of the development, this application has several limitations, such as:
+1. The Syllabus Data Extraction application can only process the syllabus from Universitas Airlangga and Institut Teknologi Sepuluh November, specifically for the Information Systems Study Programme because the scrapping and regular expression methods are created for only both syllabus.
 2. The application only accepts syllabus in .pdf format as input.
 3. The user has to input each one, not more nor less, Unair and ITS syllabus at the same time (the system will show a recommendation to input the same subject for both syllabuses). This step is important so that the application can generate maximal results for the user.
 4. The application can only handle the current structure of both syllabuses. Further updates on the format and structure of the document require improvement in the scrapping and regular expression methods.
@@ -56,11 +60,25 @@ This application will generate three outputs, from each universities and combine
 
 # Our Works
 You can see our works regarding this project on:
-### Google Docs Paper
+### Paper
 https://docs.google.com/document/d/1-UAMIWk_p9pDrvQrgv7pen5Pjfx8Se5YazVdKwgV_gA/edit?usp=sharing
 
-### Figma Project
-https://www.figma.com/file/OxX7X5bEii3yr0IpPe4zaZ/Syllabus-Data-Extraction?node-id=0%3A1
+# Contributing
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-### Notion
-https://www.notion.so/72aa17742da34a119b76eb4b4760c238?v=490acbaeab944736917bb88570c45b08
+If you have a suggestion that would make this application better, please fork the repository and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+# License
+This application distributed under the MIT License. See [LICENSE](https://github.com/AgileRE-2022/Syllabus-Data-Extraction/blob/main/LICENSE) for more information.
+
+# Contact
+Project Manager - [Github](https://github.com/dimsumenaq)
+
+Project Link: [Repository](https://github.com/AgileRE-2022/Syllabus-Data-Extraction)
