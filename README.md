@@ -1,7 +1,7 @@
-# Syllabus-Data-Extraction
+# Welcome to Syllabus-Data-Extraction!
 
 # Overview
-Syllabus Data Extractor (SDE) is an app to extract education data from syllabus document to retrieve information about related subject and major.
+Syllabus Data Extractor (SDE) is an application to extract education data from syllabus document to retrieve information about related subject and major.
 
 # How to Install
 1. Make sure Django is installed. You can see the documentation on: https://docs.djangoproject.com/en/4.0/
@@ -30,12 +30,13 @@ Syllabus-Data-Extraction > python manage.py runserver
 6. The result will show one topic for each Unair and ITS syllabuses, and the combined syllabuses.
 7. Generated word list contain 10 words from each syllabuses.
 
-
-# Google Docs Paper
+# Our Works
+You can see our works regarding this project on:
+## Google Docs Paper
 https://docs.google.com/document/d/1-UAMIWk_p9pDrvQrgv7pen5Pjfx8Se5YazVdKwgV_gA/edit?usp=sharing
 
-# Figma Project
+## Figma Project
 https://www.figma.com/file/OxX7X5bEii3yr0IpPe4zaZ/Syllabus-Data-Extraction?node-id=0%3A1
 
-# Notion
+## Notion
 https://www.notion.so/72aa17742da34a119b76eb4b4760c238?v=490acbaeab944736917bb88570c45b08
