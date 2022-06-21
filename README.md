@@ -18,16 +18,17 @@ Syllabus-Data-Extraction > python manage.py runserver
 User starts with inputting syllabus documents from Unair and ITS then the application will process the documents to generate the results. The process includes scrapping, regular expression, pre-processing, topic modelling, and making both the word cloud and word list.
 
 ## Input
-![alpro_unair](https://user-images.githubusercontent.com/87128274/174703317-4902d6e4-9026-4ddb-95fd-3fbd9f4abee0.jpg)
-![alpro_its](https://user-images.githubusercontent.com/87128274/174703323-d5e25a4f-4583-4164-a1f3-12f9a3ecbf8a.jpg)
+<img src="https://user-images.githubusercontent.com/87128274/174703317-4902d6e4-9026-4ddb-95fd-3fbd9f4abee0.jpg" width="500"/> <img src="https://user-images.githubusercontent.com/87128274/174703323-d5e25a4f-4583-4164-a1f3-12f9a3ecbf8a.jpg" width="500"/>
+
+
 
 ## Dataset
-![Screenshot 2022-06-21 083333](https://user-images.githubusercontent.com/87128274/174703374-35212524-dd87-49a1-8043-38d3f9c6bcbf.png)
+<img src="https://user-images.githubusercontent.com/87128274/174703374-35212524-dd87-49a1-8043-38d3f9c6bcbf.png" width="800"/>
 
 ## Output
-![result tm file 1](https://user-images.githubusercontent.com/87128274/174703408-26a81ee2-ac81-4e1e-a336-9dce856dd0ad.jpg)
-![result tm file 2](https://user-images.githubusercontent.com/87128274/174703422-1dd7c8b5-0dbe-4b0e-be90-5959c74e6e6c.jpg)
-![result tm file gabung](https://user-images.githubusercontent.com/87128274/174703429-0010dd1c-beb4-4c3a-99d6-95547765e005.jpg)
+<img src="https://user-images.githubusercontent.com/87128274/174703408-26a81ee2-ac81-4e1e-a336-9dce856dd0ad.jpg" width="600"/>
+<img src="https://user-images.githubusercontent.com/87128274/174703422-1dd7c8b5-0dbe-4b0e-be90-5959c74e6e6c.jpg" width="600"/>
+<img src="https://user-images.githubusercontent.com/87128274/174703429-0010dd1c-beb4-4c3a-99d6-95547765e005.jpg" width="600"/>
 
 
 
