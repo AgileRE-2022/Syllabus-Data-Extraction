@@ -12,6 +12,17 @@ Syllabus Data Extractor (SDE) is an application to extract education data from s
 Syllabus-Data-Extraction > python manage.py runserver
 ```
 
+
+# How it Works
+asd
+## Input
+asf
+## Dataset
+asd
+## Output
+asd
+
+
 # How to Use
 1. Upload the syllabus documents with .pdf format
 <img src="https://user-images.githubusercontent.com/87128274/174691975-f15f5c4b-d389-4bbc-a5be-1bb73462fb87.jpg" width="500"/>
@@ -21,6 +32,7 @@ Syllabus-Data-Extraction > python manage.py runserver
 
 3. SDE will generate two topic modelling result, from each syllabuses and from both syllabuses combined. The result consist of overviews, word clouds, and word lists.
 
+
 # Limitation
 1. The Syllabus Data Extraction application can only process the syllabus from Universitas Airlangga and Institut Teknologi Sepuluh November, specifically for the Information Systems Study Program because the scrapping and regular expression methods are created for only both syllabus
 2. The application only accept syllabus in .pdf format as the input
@@ -29,6 +41,7 @@ Syllabus-Data-Extraction > python manage.py runserver
 5. The result of the topic modelling consist of word cloud and word list.
 6. The result will show one topic for each Unair and ITS syllabuses, and the combined syllabuses.
 7. Generated word list contain 10 words from each syllabuses.
+
 
 # Our Works
 You can see our works regarding this project on:
