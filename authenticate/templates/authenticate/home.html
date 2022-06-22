@@ -5,11 +5,16 @@
 <h1> Home page</h1>
 
 {% if user.is_authenticated %}
-	{% comment %} <p>Name: {{user.first_name}} {{ user.last_name}}</p> {% endcomment %}
-	<p>Username: {{user.username}}</p>
-	
-	<p>Email: {{user.email}}</p>
+<h4>Welcome to Syllabus Data Extraction!</h4>
+<p>To start using the application features visit the <a href="{% url 'syllabus' %}">syllabus page</a>, if you need guidance regarding the application you
+	can visit the <a href="{% url 'documentation' %}">documentation page</a>, on the <a href="{% url 'dataset' %}">dataset page</a> there are files that you can directly use to test application
+	features</p>
+<p class="mb-1">Username: {{user.username}}</p>
+<p>Email: {{user.email}}</p>
 
+{% else %}
+<h4>Welcome to Syllabus Data Extraction!</h4>
+<p>To start using the application, please <a href="{% url 'login' %}">login</a> first or <a href="{% url 'register' %}">create an account</a> if you don't have an account</p>
 {% endif %}
 
 {% endblock %}
